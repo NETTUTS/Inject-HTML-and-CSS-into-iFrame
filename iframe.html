@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container grid">
+	<form>
+		<h2>HTML</h2>
+		<textarea id="html"></textarea>
+
+		<h2>CSS</h2>
+		<textarea name="" id="css"></textarea>
+	</form>
+</div>
+
+<div class="output grid"></div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+
+<script>
+
+$(function() {
+		// equal-height columns.
+		$('.grid').css('height', $(window).height());
+
+		var $frame = $('<iframe></iframe>').appendTo('.output'),
+			doc = $frame[0].contentWindow.document,
+			body = $('body', doc),
+			styleTag = $('head', doc).append('<style></style>').children('style');
+
+		$('textarea').focus(function() {
+			var $this = $(this);
+
+			$this.keyup(function() {
+				if ($this.attr('id') === 'html') {
+					body.html( $this.val() );
+				} else {
+					// CSS was added
+					styleTag.text( $this.val() );
+				}
+			});
+		});
+ 
+});
+
+
+</script>
+
+</body>
+</html>
