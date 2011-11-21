@@ -20,39 +20,46 @@
 	<iframe></iframe>
 </div>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 
 <script src="http://localhost:35729/livereload.js"></script>
 
 <script>
-
 (function() {
-	$('.grid').height( $(window).height());	
+	$('.grid').height( $(window).height() );	
 
-	var frame = $('iframe'),
-		// frame[0].contentWindow.document
-		body = frame.contents().find('body');
-		styleTag = frame.contents().find('head').append('<style></style>').children('style');
+	var	contents = $('iframe').contents(),
+		body = contents.find('body'),
+		styleTag = contents
+					.find('head')
+					.append('<style></style>')
+					.children('style');
 
 	$('textarea').focus(function() {
-		console.log('focused');
 		var $this = $(this);
 
 		$this.keyup(function() {
-			if ( $this.attr('id') === 'html' ) {
+			if ( $this.attr('id') === 'html') {
 				body.html( $this.val() );
 			} else {
-				// css
+				// it had to be css
 				styleTag.text( $this.val() );
 			}
 		});
 	});
-
+	
 })();
-
 
 </script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
