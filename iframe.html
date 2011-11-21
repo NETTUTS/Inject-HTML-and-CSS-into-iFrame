@@ -30,10 +30,7 @@
 
 	var	contents = $('iframe').contents(),
 		body = contents.find('body'),
-		styleTag = contents
-					.find('head')
-					.append('<style></style>')
-					.children('style');
+		styleTag = $('<style></style>').appendTo(contents.find('head'));
 
 	$('textarea').focus(function() {
 		var $this = $(this);
@@ -47,7 +44,7 @@
 			}
 		});
 	});
-	
+
 })();
 
 </script>
