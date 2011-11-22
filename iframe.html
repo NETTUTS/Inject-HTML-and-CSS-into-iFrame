@@ -32,17 +32,14 @@
 		body = contents.find('body'),
 		styleTag = $('<style></style>').appendTo(contents.find('head'));
 
-	$('textarea').focus(function() {
+	$('textarea').keyup(function() {
 		var $this = $(this);
-
-		$this.keyup(function() {
-			if ( $this.attr('id') === 'html') {
-				body.html( $this.val() );
-			} else {
-				// it had to be css
-				styleTag.text( $this.val() );
-			}
-		});
+		if ( $this.attr('id') === 'html') {
+			body.html( $this.val() );
+		} else {
+			// it had to be css
+			styleTag.text( $this.val() );
+		}
 	});
 
 })();
